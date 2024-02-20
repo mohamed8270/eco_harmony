@@ -25,7 +25,7 @@ class UserIssueDetailPage extends StatefulWidget {
 
 class _UserIssueDetailPageState extends State<UserIssueDetailPage> {
   MongoController mongoController = Get.put(MongoController());
-  late double sliderValue; // To hold the slider's value
+  double sliderValue = 0;
 
   Future<Uint8List?> downloadImage(String imageUrl) async {
     try {
@@ -88,8 +88,17 @@ class _UserIssueDetailPageState extends State<UserIssueDetailPage> {
   void initState() {
     super.initState();
     mongoController.getAllData();
+    setInitialSliderValue();
     final MongoController mongoIssueController = Get.find<MongoController>();
     sliderValue = mongoController.getSliderValueByIndex(widget.id);
+  }
+
+  void setInitialSliderValue() {
+    // Assuming MongoController is already loaded with issues data
+    final MongoController mongoIssueController = Get.find<MongoController>();
+    String status = mongoIssueController.getStatusByIndex(widget.id);
+    sliderValue = mongoIssueController
+        .statusToSliderValue(status); // Convert status to slider value
   }
 
   @override
@@ -130,7 +139,7 @@ class _UserIssueDetailPageState extends State<UserIssueDetailPage> {
           min: 0,
           max: 2,
           divisions: 2,
-          label: mongoIssueController.sliderValueToStatus(sliderValue),
+          label: Get.find<MongoController>().sliderValueToStatus(sliderValue),
           inactiveColor: egrey.withOpacity(0.4),
           activeColor: eblue,
           thumbColor: eblue,
@@ -138,7 +147,8 @@ class _UserIssueDetailPageState extends State<UserIssueDetailPage> {
             setState(() {
               sliderValue = newrating;
             });
-            mongoIssueController.updateIssueStatusByIndex(widget.id, newrating);
+            Get.find<MongoController>()
+                .updateIssueStatusByIndex(widget.id, newrating);
           },
         ),
       ),
