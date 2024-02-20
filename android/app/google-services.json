@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "873858675736",
+    "project_id": "eco-harmony-8a7d6",
+    "storage_bucket": "eco-harmony-8a7d6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:873858675736:android:073e9ed99408289a377f6d",
+        "android_client_info": {
+          "package_name": "com.example.eco_harmony"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "873858675736-eg6b1bkjlkbe52ort02h3bm7fqgoe97c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.eco_harmony",
+            "certificate_hash": "463553c14a7d19a74cbc3297f1c3705d9474a300"
+          }
+        },
+        {
+          "client_id": "873858675736-asffiuc22or0v27aaqp2tedgjil2jc67.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC12p4MQFwOGv-zrdY5ZrhSHNWBYKTm3GI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "873858675736-asffiuc22or0v27aaqp2tedgjil2jc67.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
