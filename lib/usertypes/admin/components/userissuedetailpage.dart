@@ -14,6 +14,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 // import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class UserIssueDetailPage extends StatefulWidget {
   final int id;
@@ -311,12 +312,22 @@ class _UserIssueDetailPageState extends State<UserIssueDetailPage> {
                     ),
                   ),
                 ),
-                Text(
-                  mongoController.allData[widget.id]['image'].toString(),
-                  style: GoogleFonts.poppins(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w600,
-                    color: eblue,
+                GestureDetector(
+                  onTap: () async {
+                    final Uri url =
+                        Uri.parse(mongoController.allData[widget.id]['image']);
+                    if (!await launchUrl(url,
+                        mode: LaunchMode.inAppBrowserView)) {
+                      throw Exception('Could not launch $url');
+                    }
+                  },
+                  child: Text(
+                    mongoController.allData[widget.id]['image'].toString(),
+                    style: GoogleFonts.poppins(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600,
+                      color: eblue,
+                    ),
                   ),
                 ),
               ],
